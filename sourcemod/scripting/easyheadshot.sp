@@ -63,12 +63,15 @@ public MRESReturn TraceAttack(pThis, Handle:hReturn, Handle:hParams)
 	if (IsValidClient(attacker, true) && g_bIsEnabled[attacker])
 	{
 		// Set hitgroup to HITGROUP_HEAD (1)
-		DHookSetParamObjectPtrVar(hParams, 3, 56+12, ObjectValueType_Int, 1); 
+		DHookSetParamObjectPtrVar(hParams, 3, 56+12, ObjectValueType_Int, 1);
 
 		// Set CGameTrace::endpos to victim's eye position. Might revisit later to set it to victim's BONE_HEAD position instead.
 		float eyePos[3];
 		GetClientEyePosition(pThis, eyePos);
-		DHookSetParamObjectPtrVarVector(hParams, 3, 12, ObjectValueType_Vector, eyePos); 
+		DHookSetParamObjectPtrVarVector(hParams, 3, 12, ObjectValueType_Vector, eyePos);
+
+		// Set CGameTrace::physicsbone to the head bone (6)
+		DHookSetParamObjectPtrVar(hParams, 3, 56+16, ObjectValueType_Int, 6);
 	}
 
 	return MRES_Ignored;
@@ -122,5 +125,7 @@ struct csurface_t
 	short			surfaceProps;	// 2
 	unsigned short	flags;			// 2
 };									// size = 8
+
+https://github.com/ValveSoftware/source-sdk-2013/tree/master/sp/src/game/shared
 
 */
