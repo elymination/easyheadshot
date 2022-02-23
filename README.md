@@ -1,6 +1,8 @@
 # easyheadshot
 SourceMod plugin for CS:GO, redirecting any _bullet_ shot to the victim's head.
 
+![gif of the plugin in action](https://github.com/elymination/easyheadshot/blob/master/easyheadshot.gif)
+
 The plugin needs DHooks (https://github.com/peace-maker/DHooks2) to compile.
 
 ## In game usage
